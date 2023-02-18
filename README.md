@@ -1,1 +1,3 @@
-# EEE196_capstone_repo
+# CoE199 Capstone Project Repository
+
+This repository is for SSL7's capstone project titled "Air Quality Index-Adjusted Routing for Pedestrians in Metro Manila"

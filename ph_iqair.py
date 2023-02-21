@@ -51,8 +51,8 @@ US_AQI = []
 start = time()
 for sensor in IQAir_sensors:
     Sensor_Name.append(sensor)      # could automate sensor name using the html content
-    X_location.append(0)            # temp values, still to add
-    Y_location.append(0)            # temp values, still to add
+    X_location.append(IQAir_locations[sensor][0])
+    Y_location.append(IQAir_locations[sensor][1])
     
     # page = urlopen(IQAir_sensors[sensor])
     # html = page.read().decode("utf-8")

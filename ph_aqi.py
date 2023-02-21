@@ -35,6 +35,24 @@ IQAir_sensors = {
     # MISSING: Unioil Katipunan - Quezon Ave - Barangka - Conception, National Children's Hospital, Madison st. Greenhills
 }
 
+IQAir_locations = {
+    # "Multinational_Paranaque" : [121.001488,14.486208], #waqi
+    # "Calzada_Taguig" : [121.07563,14.536089], #waqi
+    # "Forbestown_Taguig" : [121.043945,14.550762], #waqi
+    "NorthForbesPark_Makati" : [121.035596,14.553975],
+    "Dasmarinas_Makati" : [121.030732,14.56628],
+    "AyalaCircuit_Makati" : [0,0],                          # TO GET
+    # "WackWack_Mandaluyong" : [121.05573,14.591224], #waqi
+    "Unioil_Shaw" : [0,0],                                  # TO GET
+    "Unioil_Blumentritt" : [121.026652,14.6021],
+    "Unioil_Cainta" : [121.125296,14.582285],
+    "Unioil_Congressional" : [0,0],                         # TO GET
+    "Unioil_WestAve" : [121.027586,14.644702],
+    "Unioil_EdsaGuadalupe" : [121.025319,14.476359]
+    # "Unioil_Meycauayan" : []    # 0 always?
+    # MISSING: Unioil Katipunan - Quezon Ave - Barangka - Conception, National Children's Hospital, Madison st. Greenhills
+}
+
 Sensor_Name = []
 X_location = []
 Y_location = []
@@ -49,8 +67,8 @@ for sensor in WAQI_sensors:
 start = time()
 for sensor in IQAir_sensors:
     Sensor_Name.append(sensor)      # could automate sensor name using the html content
-    X_location.append(0)            # temp values, still to add
-    Y_location.append(0)            # temp values, still to add
+    X_location.append(IQAir_locations[sensor][0])
+    Y_location.append(IQAir_locations[sensor][1])
     
     # page = urlopen(IQAir_sensors[sensor])
     # html = page.read().decode("utf-8")

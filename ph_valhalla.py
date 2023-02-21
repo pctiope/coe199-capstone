@@ -1,11 +1,11 @@
 import json
 from subprocess import call
 
-with open("request.json","r") as f:
+with open("route_request_test1.json","r") as f:
     data = json.load(f)
     x_start, y_start, x_end, y_end = data["start"][0], data["start"][1], data["end"][0], data["end"][1]
 
-with open("actual_test.json","r") as f:
+with open("filtered.json","r") as f:
     data = json.load(f)
     exclude_poly = data["features"][0]["geometry"]["coordinates"]
 

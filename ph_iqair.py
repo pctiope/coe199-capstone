@@ -47,7 +47,7 @@ print("Time Elapsed: "+str(time()-start)+" seconds")
 
 # to csv file
 df = pd.DataFrame({'Sensor Name':Sensor_Name,'X':X_location,'Y':Y_location,'US AQI':US_AQI})
-df.to_csv('IQAir_test.csv', index=False, encoding='utf-8')
+df.to_csv('test_IQAir.csv', index=False, encoding='utf-8')
 
 # save to shapefile
 geometry = [Point(xy) for xy in zip(df.X, df.Y)]

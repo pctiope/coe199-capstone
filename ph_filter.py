@@ -12,7 +12,8 @@ for polygon in sorted_data:
         coordinates = polygon["geometry"]
         temp.append(shape(coordinates))
 unions = unary_union(temp) 
-exclude_poly = [poly[0] for poly in mapping(unions)["coordinates"]]                         # remove extra brackets of mapping()
+exclude_poly = [poly for poly in mapping(unions)["coordinates"]]        # removed poly[0]
+# print(exclude_poly)                                                   # debugging
 output_dict = {"type": "FeatureCollection", "name": "filtered_output", "crs": {"type": "name", "properties": {"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}}, "features": [{"type": "Feature", "geometry": {"type": "Polygon","coordinates": exclude_poly}}]}
 json_output = json.dumps(output_dict, indent=4)
 with open("filtered.json", "w") as outfile:

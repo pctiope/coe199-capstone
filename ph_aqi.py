@@ -41,12 +41,12 @@ IQAir_locations = {
     # "Forbestown_Taguig" : [121.043945,14.550762], #waqi
     "NorthForbesPark_Makati" : [121.035596,14.553975],
     "Dasmarinas_Makati" : [121.030732,14.56628],
-    "AyalaCircuit_Makati" : [0,0],                          # TO GET
+    "AyalaCircuit_Makati" : [121.019740,14.573594],
     # "WackWack_Mandaluyong" : [121.05573,14.591224], #waqi
-    "Unioil_Shaw" : [0,0],                                  # TO GET
+    "Unioil_Shaw" : [121.037489,14.589523],
     "Unioil_Blumentritt" : [121.026652,14.6021],
     "Unioil_Cainta" : [121.125296,14.582285],
-    "Unioil_Congressional" : [0,0],                         # TO GET
+    "Unioil_Congressional" : [121.064763,14.672367],
     "Unioil_WestAve" : [121.027586,14.644702],
     "Unioil_EdsaGuadalupe" : [121.025319,14.476359]
     # "Unioil_Meycauayan" : []    # 0 always?

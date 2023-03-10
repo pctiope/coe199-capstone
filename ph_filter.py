@@ -3,7 +3,7 @@ from shapely.geometry import Point, Polygon, shape, mapping
 from shapely.ops import unary_union
 import sys
 
-threshold = 70
+threshold = 50
 filename = "polygonized.json"
 with open(filename) as f:
     data = json.load(f)

@@ -23,6 +23,7 @@ while 1:
     polygonize(date_time)
 
     #ph_filter functions
-    filter(date_time)
+    threshold = 50
+    filter(threshold, date_time)
 
-    sleep(5)
+    sleep(5)    # temporary, have to change to a more regular update interval

@@ -3,8 +3,7 @@ from shapely.geometry import Point, Polygon, shape, mapping
 from shapely.ops import unary_union
 import sys
 
-def filter(date_time):
-    threshold = 50
+def filter(threshold, date_time):
     filename = "./temp/polygonized_"+date_time+".json"
     with open(filename) as f:
         data = json.load(f)

@@ -26,4 +26,5 @@ while 1:
     threshold = 50
     filter(threshold, date_time)
 
+    break
     sleep(5)    # temporary, have to change to a more regular update interval

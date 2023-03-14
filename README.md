@@ -3,4 +3,4 @@
 This repository is for SSL7's capstone project titled "Air Quality Index-Adjusted Routing for Pedestrians in Metro Manila"
 
 ## Notes:
-  * Run ph_main.py
+  * Run ``python ph_main.py``

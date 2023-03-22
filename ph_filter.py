@@ -26,7 +26,7 @@ def filter(threshold, date_time):
             print("Something went wrong")
     # print(exclude_poly)
 
-    output_dict = {"type": "FeatureCollection", "name": "filtered_output", "crs": {"type": "name", "properties": {"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}}, "features": [{"type": "Feature", "properties":{}, "geometry": {"type": "Polygon","coordinates": exclude_poly}}]}
+    output_dict = {"type": "FeatureCollection", "name": "filtered_output", "threshold": threshold, "crs": {"type": "name", "properties": {"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}}, "features": [{"type": "Feature", "properties":{}, "geometry": {"type": "Polygon","coordinates": exclude_poly}}]}
     json_output = json.dumps(output_dict, indent=4)
     with open("./temp/filtered_"+date_time+".json", "w") as outfile:
         outfile.write(json_output)

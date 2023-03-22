@@ -1,5 +1,6 @@
 from time import sleep
 from datetime import datetime
+from random import randint
 
 from ph_aqi import init_sensors, get_sensor_data, df_to_csv, df_to_shp
 from ph_idw import get_idw
@@ -20,11 +21,11 @@ while 1:
     get_idw(date_time)
 
     #ph_polygonize functions
-    polygonize(date_time)
+    threshold = randint(25,75)
+    print("threshold: "+str(threshold))
+    polygonize(threshold, date_time)
 
     #ph_filter functions
-    threshold = 50
     filter(threshold, date_time)
 
-    break
-    sleep(5)    # temporary, have to change to a more regular update interval
+    sleep(1)    # temporary, have to change to a more regular update interval

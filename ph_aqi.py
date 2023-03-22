@@ -79,7 +79,7 @@ def get_sensor_data(WAQI_sensors, IQAir_locations, IQAir_sensors):
         soup = BeautifulSoup(page.content, "html.parser")
 
         sensor_aqi = soup.find('p', attrs={'class':'aqi-value__value'}).string
-        print(sensor_aqi)
+        print(sensor+": "+sensor_aqi)
         US_AQI.append(sensor_aqi)
     # print("Time Elapsed: "+str(time()-start)+" seconds")
     df = pd.DataFrame({'Sensor Name':Sensor_Name,'X':X_location,'Y':Y_location,'US AQI':US_AQI})

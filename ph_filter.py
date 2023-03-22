@@ -17,16 +17,18 @@ def filter(threshold, date_time):
     exclude_poly = [[[]]]
     if len(temp):
         unions = unary_union(temp)
-        print(mapping(unions)["coordinates"])                               # debugging
+        # print(mapping(unions)["coordinates"])
         if (isinstance(mapping(unions)["coordinates"],list)):
             exclude_poly = [poly[0] for poly in mapping(unions)["coordinates"]]
         elif (isinstance(mapping(unions)["coordinates"],tuple)):
             exclude_poly = mapping(unions)["coordinates"]
         else:
             print("Something went wrong")
-    # print(exclude_poly)                                                   # debugging
+    # print(exclude_poly)
 
     output_dict = {"type": "FeatureCollection", "name": "filtered_output", "crs": {"type": "name", "properties": {"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}}, "features": [{"type": "Feature", "properties":{}, "geometry": {"type": "Polygon","coordinates": exclude_poly}}]}
     json_output = json.dumps(output_dict, indent=4)
     with open("./temp/filtered_"+date_time+".json", "w") as outfile:
+        outfile.write(json_output)
+    with open("../3-1-23 update/3-1-23/filtered.json", "w") as outfile: # point this to your leaflet+valhalla github folder
         outfile.write(json_output)

@@ -21,11 +21,11 @@ while 1:
     get_idw(date_time)
 
     #ph_polygonize functions
-    threshold = randint(25,75)
+    threshold = max([int(i) for i in US_AQI]) - randint(5,10)
     print("threshold: "+str(threshold))
     polygonize(threshold, date_time)
 
     #ph_filter functions
     filter(threshold, date_time)
 
-    sleep(1)    # temporary, have to change to a more regular update interval
+    sleep(30)    # temporary, have to change to a more regular update interval

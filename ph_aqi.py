@@ -14,7 +14,7 @@ def init_sensors():
         "Baltazar_Caloocan" : "https://api.waqi.info/feed/A64045/?token=6f298a6f68c27deb7dcd10aacef33abbd6819fdc",
         "Forbestown_Taguig" : "https://api.waqi.info/feed/A248974/?token=6f298a6f68c27deb7dcd10aacef33abbd6819fdc",
         "SerendraBamboo_Taguig" : "https://api.waqi.info/feed/A50926/?token=6f298a6f68c27deb7dcd10aacef33abbd6819fdc",
-        # "Calzada_Taguig" : "https://api.waqi.info/feed/A204484/?token=6f298a6f68c27deb7dcd10aacef33abbd6819fdc",
+        "Calzada_Taguig" : "https://api.waqi.info/feed/A204484/?token=6f298a6f68c27deb7dcd10aacef33abbd6819fdc",
         "Multinational_Paranaque" : "https://api.waqi.info/feed/A127897/?token=6f298a6f68c27deb7dcd10aacef33abbd6819fdc"
     }
 
@@ -66,10 +66,20 @@ def get_sensor_data(WAQI_sensors, IQAir_locations, IQAir_sensors):
         except Exception as err:
             print("Error with "+ sensor + f" sensor: {err=}, {type(err)=}")
             continue
+
+        try:
+            sensor_aqi = float(response.json()["data"]["aqi"])
+            sensor_x = float(response.json()["data"]["city"]["geo"][1])
+            sensor_y = float(response.json()["data"]["city"]["geo"][0])
+        except Exception as err:
+            print("Error with "+ sensor + f" sensor: {err=}, {type(err)=}")
+            continue
+
+        print(sensor+": "+str(sensor_aqi))
         Sensor_Name.append(sensor)
-        X_location.append(response.json()["data"]["city"]["geo"][1])
-        Y_location.append(response.json()["data"]["city"]["geo"][0])
-        US_AQI.append(response.json()["data"]["aqi"])
+        X_location.append(sensor_x)
+        Y_location.append(sensor_y)
+        US_AQI.append(sensor_aqi)
 
     # start = time()
     for sensor in IQAir_sensors:
@@ -81,9 +91,14 @@ def get_sensor_data(WAQI_sensors, IQAir_locations, IQAir_sensors):
             print("Error with "+ sensor + f" sensor: {err=}, {type(err)=}")
             continue
         soup = BeautifulSoup(page.content, "html.parser")
-        sensor_aqi = soup.find('p', attrs={'class':'aqi-value__value'}).string
-        print(sensor+": "+sensor_aqi)
 
+        try:
+            sensor_aqi = float(soup.find('p', attrs={'class':'aqi-value__value'}).string)
+        except Exception as err:
+            print("Error with "+ sensor + f" sensor: {err=}, {type(err)=}")
+            continue
+
+        print(sensor+": "+str(sensor_aqi))
         Sensor_Name.append(sensor)      # could automate sensor name using the html content
         X_location.append(IQAir_locations[sensor][0])
         Y_location.append(IQAir_locations[sensor][1])

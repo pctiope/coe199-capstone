@@ -30,5 +30,5 @@ def filter(threshold, date_time):
     json_output = json.dumps(output_dict, indent=4)
     with open("./temp/filtered_"+date_time+".json", "w") as outfile:
         outfile.write(json_output)
-    with open("../3-1-23 update/3-1-23/filtered.json", "w") as outfile: # point this to your leaflet+valhalla github folder
+    with open("../express+leaflet/leaflet_test/public/filtered.json", "w") as outfile: # point this to your leaflet+valhalla github folder
         outfile.write(json_output)

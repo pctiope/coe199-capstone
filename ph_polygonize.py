@@ -6,6 +6,7 @@ def polygonize(threshold, date_time):
     mask = None
     with rasterio.Env():
         with rasterio.open("./shapefiles/Philippines_Pollution_"+date_time+"_idw.tif") as src:
+        # with rasterio.open("./shapefiles/Philippines_Pollution_idw.tif") as src:
             image = src.read(1) # first band
             image = image.astype('int16')
             geoms = [{'type':'Feature','properties': {'AQI': v}, 'geometry': s} for s,v in shapes(image, mask=mask, transform=src.transform) if v <= 1000]
@@ -13,5 +14,5 @@ def polygonize(threshold, date_time):
     json_output = json.dumps(output_dict, indent=4)
     with open("./temp/polygonized_"+date_time+".json", "w") as outfile:
         outfile.write(json_output)
-    with open("../3-1-23 update/3-1-23/polygonized.json", "w") as outfile:  # point this to your leaflet+valhalla github folder
+    with open("../express+leaflet/leaflet_test/public/polygonized.json", "w") as outfile:  # point this to your leaflet+valhalla github folder
         outfile.write(json_output)
